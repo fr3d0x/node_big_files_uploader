@@ -9,16 +9,15 @@ const upload_big_files = {
     register: function(server, option, next){
         server.route([
             {
-                method: "POST",
+                method: "GET",
                 path: "/api/upload_big_files",
                 config:{
                     auth: 'jwt'
                 },
                 handler: function(request, reply){
                     const req = request.raw.req;
-                    var user =  null;
-                    models.users.findById(1).then(function(data){
-                        reply(response.generate_json(req.headers.authorization, 'Este es el primer user: '+ data.name, 'SUCCESS')).code(200)
+                    models.vdm.find({where:{id:34}, include : models.production_dpt}).then(function(data){
+                        reply(data).code(200)
                     });
                 }
             }

@@ -1,10 +1,11 @@
 /**
- * Created by fr3d0 on 30/05/17.
+ * Created by fr3d0 on 02/06/17.
  */
 const Sequelize = require('sequelize');
 const db = require('./_db');
+const production_dpt = require('./production_dpt');
 
-const users = db.define('Users', {
+const wacom_vid = db.define('wacom_vids', {
         id: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -14,27 +15,30 @@ const users = db.define('Users', {
             validate: {
             }
         },
-        name: {
+        file: {
             type: Sequelize.STRING,
-            allowNull: false,
             validate: {
             }
         },
-        lastName: {
+        fileName: {
             type: Sequelize.STRING,
-            allowNull: false,
             validate: {
             }
         },
-        username: {
-            type: Sequelize.STRING,
-            allowNull: false,
+        productionDptId: {
+            type: Sequelize.INTEGER,
             validate: {
             }
-        },
+        }
     },
     {
-        timestamps: false
+        classMethods:{
+            associate:function(){
+                wacom_vid.belongsTo(production_dpt, { foreignKey: 'production_dpt_id' });
+            }
+        },
+        timestamps: true,
+        underscored : true
     });
 
-module.exports = users;
+module.exports = wacom_vid;

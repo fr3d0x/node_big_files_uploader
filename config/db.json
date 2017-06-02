@@ -3,7 +3,7 @@
     "db_conn":{
       "username": "root",
       "password": "1234",
-      "database": "dawereDb",
+      "database": "dawProcessDb",
       "host": "127.0.0.1",
       "dialect": "mysql",
       "url": "mysql://root:1234@localhost/dawereDb",
