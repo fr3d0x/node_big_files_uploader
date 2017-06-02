@@ -1,0 +1,47 @@
+{
+  "dev": {
+    "db_conn":{
+      "username": "root",
+      "password": "1234",
+      "database": "dawereDb",
+      "host": "127.0.0.1",
+      "dialect": "mysql",
+      "url": "mysql://root:1234@localhost/dawereDb",
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      }
+    }
+  },
+  "QA": {
+    "db_conn":{
+      "username": "root",
+      "password": "dawmsql2015",
+      "database": "dawereDb",
+      "host": "127.0.0.1",
+      "url": "mysql://root:dawmsql2015@localhost/dawereDb",
+      "dialect": "mysql",
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      }
+    }
+  },
+  "production": {
+    "db_conn":{
+      "username": "root",
+      "password": "daw-db-pass16",
+      "database": "dawereDb",
+      "host": "127.0.0.1",
+      "url": "mysql://root:daw-db-pass16@localhost/dawereDb",
+      "dialect": "mysql",
+      "pool": {
+        "max": 5,
+        "min": 0,
+        "idle": 10000
+      }
+    }
+  }
+}

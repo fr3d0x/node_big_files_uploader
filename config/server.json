@@ -1,0 +1,14 @@
+{
+  "dev":{
+    "host": "localhost",
+    "port": 8000
+  },
+  "qa":{
+    "host": "",
+    "port": 8000
+  },
+  "production":{
+    "host": "",
+    "port": 8000
+  }
+}

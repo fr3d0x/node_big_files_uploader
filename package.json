@@ -1,0 +1,30 @@
+{
+  "name": "node_big_files_uploader",
+  "version": "1.0.0",
+  "description": "nodejs app for uploading big size files",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alfredo Escalante",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-json-generator": "^0.1.0",
+    "hapi": "^16.3.0",
+    "config_path": "config",
+    "jsonwebtoken": "^7.4.1",
+    "load-grunt-tasks": "^3.5.2",
+    "mysql": "^2.13.0",
+    "sequelize": "^3.30.4",
+    "time-grunt": "^1.4.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "daemon": "^1.1.0"
+  }
+}
