@@ -7,19 +7,18 @@ const Hapi = require('hapi');
 // Create a server with a host and port
 const server = new Hapi.Server();
 const conf = require('./config/env_conf.json');
-server.connection(conf.server.sockets);
-server.connection(conf.server.cache);
+server.connection(conf.server);
 /*Plugins && Modules*/
 const modules = [];
 const plugins = [];
 /*Plugins*/
 plugins.push(require('./auth/jwt'));
 /*Modules*/
-modules.push(require('./end_points/sockets/socket_clock'));
+modules.push(require('./end_points/upload_big_files'));
 
-server.register(plugins.concat(modules).concat(plugins), (err) => {
+server.register(plugins.concat(modules), (err) => {
     if (err) {
-        console.error('Failed to load a plugin_a:', err);
+        console.error('Failed to load a plugin:', err);
     }
 });
 
@@ -28,5 +27,6 @@ server.start((err) => {
     if (err) {
         throw err;
     }
+    console.log('Server running at:', server.info.uri);
 });
 

@@ -3,8 +3,8 @@
  */
 'use strict';
 
-var response = require('../../lib/response');
-var models = require('../../models');
+var response = require('../lib/response');
+var models = require('../models');
 const upload_big_files = {
     register: function(server, option, next){
         server.route([
