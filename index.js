@@ -7,13 +7,14 @@ const Hapi = require('hapi');
 // Create a server with a host and port
 const server = new Hapi.Server();
 const conf = require('./config/env_conf.json');
-server.connection(conf.server);
+server.connection(conf.server.conn);
 /*Plugins && Modules*/
 const modules = [];
 const plugins = [];
 /*Plugins*/
 plugins.push(require('./auth/jwt'));
 /*Modules*/
+modules.push(require('./end_points/resume_upload'));
 modules.push(require('./end_points/upload_big_files'));
 
 server.register(plugins.concat(modules), (err) => {

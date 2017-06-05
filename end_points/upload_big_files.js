@@ -9,16 +9,18 @@ const upload_big_files = {
     register: function(server, option, next){
         server.route([
             {
-                method: "GET",
+                method: "POST",
                 path: "/api/upload_big_files",
                 config:{
+                    payload:{
+                        maxBytes: 209715200
+                    },
                     auth: 'jwt'
                 },
                 handler: function(request, reply){
                     const req = request.raw.req;
-                    models.vdm.find({where:{id:34}, include : models.production_dpt}).then(function(data){
-                        reply(data).code(200)
-                    });
+                    reply("hola mundo").code(200)
+
                 }
             }
         ]);
