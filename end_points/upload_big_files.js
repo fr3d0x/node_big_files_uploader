@@ -12,9 +12,6 @@ const upload_big_files = {
                 method: "GET",
                 path: "/api/upload_big_files",
                 config:{
-                    payload:{
-                        maxBytes: 209715200
-                    },
                     auth: 'jwt'
                 },
                 handler: function(request, reply){
