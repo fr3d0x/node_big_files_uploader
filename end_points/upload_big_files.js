@@ -9,7 +9,7 @@ const upload_big_files = {
     register: function(server, option, next){
         server.route([
             {
-                method: "POST",
+                method: "GET",
                 path: "/api/upload_big_files",
                 config:{
                     payload:{
