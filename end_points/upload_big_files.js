@@ -18,7 +18,7 @@ const upload_big_files = {
                     auth: 'jwt'
                 },
                 handler: function(request, reply){
-                    const req = request.raw.req;
+                    const file = request.payload;
                     reply("hola mundo").code(200)
 
                 }
