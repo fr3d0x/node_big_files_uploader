@@ -1,11 +1,12 @@
 /**
- * Created by fr3d0 on 02/06/17.
+ * Created by fr3d0 on 07/06/17.
  */
 const Sequelize = require('sequelize');
 const db = require('./_db');
-const production_dpt = require('./production_dpt');
+const tuition = require('./tuition');
+const subject_planification = require('./subject_planification');
 
-const prod_audio = db.define('prod_audios', {
+const subject = db.define('subjects', {
         id: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -15,30 +16,27 @@ const prod_audio = db.define('prod_audios', {
             validate: {
             }
         },
-        file: {
+        name: {
             type: Sequelize.STRING,
-            validate: {
-            }
+            allowNull: false,
+            validate:{}
         },
-        file_name: {
-            type: Sequelize.STRING,
-            validate: {
-            }
-        },
-        production_dpt_id: {
+        grade_id:{
             type: Sequelize.INTEGER,
-            validate: {
-            }
+            allowNull: false,
+            validate:{}
         }
     },
     {
         classMethods:{
             associate:function(){
-                prod_audio.belongsTo(production_dpt, { foreignKey: 'production_dpt_id' });
+                subject.hasOne(subject_planification, { foreignKey: 'subject_id' });
+                subject.belongsTo(tuition, { foreignKey: 'grade_id' });
+
             }
         },
         timestamps: true,
         underscored : true
     });
 
-module.exports = prod_audio;
+module.exports = subject;

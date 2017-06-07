@@ -20,12 +20,12 @@ const master_plane = db.define('master_planes', {
             validate: {
             }
         },
-        fileName: {
+        file_name: {
             type: Sequelize.STRING,
             validate: {
             }
         },
-        productionDptId: {
+        production_dpt_id: {
             type: Sequelize.INTEGER,
             validate: {
             }

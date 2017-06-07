@@ -5,6 +5,7 @@ const Sequelize = require('sequelize');
 const db = require('./_db');
 const production_dpt = require('./production_dpt');
 const vdm_change = require('./vdm_change');
+const classes_planification = require('./classes_planification');
 
 const vdm = db.define('vdms', {
         id: {
@@ -32,6 +33,11 @@ const vdm = db.define('vdms', {
             type: Sequelize.STRING,
             allowNull: false,
             validate:{}
+        },
+        classes_planification_id:{
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            validate:{}
         }
     },
     {
@@ -39,6 +45,7 @@ const vdm = db.define('vdms', {
             associate:function(){
                 vdm.hasMany(vdm_change, { foreignKey: 'vdm_id' });
                 vdm.hasOne(production_dpt, { foreignKey: 'vdm_id' });
+                vdm.belongsTo(classes_planification, { foreignKey: 'classes_planification_id' });
 
             }
         },

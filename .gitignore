@@ -60,4 +60,4 @@ typings/
 .env
 
 config/env_conf.json
-.idea
+.idea/

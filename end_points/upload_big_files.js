@@ -15,7 +15,7 @@ const upload_big_files = {
                 path: "/api/upload_big_files",
                 config:{
                     payload:{
-                        maxBytes: 209715200
+                        maxBytes: 200000000000
                     },
                     auth: 'jwt'
                 },
@@ -24,7 +24,34 @@ const upload_big_files = {
                     const query = request.query;
                     fs.writeFile(big_files_tmp_path+query.file_name+'/'+query.file_name+'.part'+file._chunkNumber, file.upload, (err) => {
                         if (err) throw err;
-                        reply(query.file_name+'.part'+file._chunkNumber + " has been saved").code(200)
+
+                        var current_size = parseInt(file._chunkNumber) * parseInt(file._chunkSize);
+                        if(current_size + parseInt(file._currentChunkSize) >= parseInt(file._totalSize)){
+                            models.vdm.find(
+                                {where:{id: parseInt(query.vdm_id)},
+                                    include:[{
+                                        model: models.production_dpt,
+                                        include:[models.master_plane,
+                                                 models.detail_plane,
+                                                 models.wacom_vid,
+                                                 models.prod_audio]
+                                        },
+                                        {
+                                            model: models.classes_planification,
+                                            include: {
+                                                model: models.subject_planification,
+                                                include:{
+                                                    model: models.subject,
+                                                    include: models.tuition
+                                                }
+                                            }
+                                        }]
+                                }).then(function(vdm){
+                                reply(vdm).code(200)
+                            });
+                        }else{
+                            reply(query.file_name+'.part'+file._chunkNumber + " has been saved").code(200)
+                        }
                     });
                 }
             }
