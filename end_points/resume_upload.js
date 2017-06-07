@@ -19,13 +19,19 @@ const resume_upload = {
                 handler: function(request, reply){
                     const dir = require('../config/env_conf.json').server.big_files_tmp;
                     const params = request.query;
-                    fs.readdir(dir+params.file_name, (err, files) => {
-                        if(files != null && files != undefined){
-                            reply({size: files.length, status: "SUCCESS"}).code(200)
-                        }else{
-                            reply({size: 0, status: "SUCCESS"}).code(200)
-                        }
-                    });
+                    if (!fs.existsSync(dir+params.file_name)){
+                        fs.mkdirSync(dir+params.file_name);
+                        reply({size: 0, status: "SUCCESS"}).code(200)
+                    }else{
+                        fs.readdir(dir+params.file_name, (err, files) => {
+                            if(files != null && files != undefined){
+                                reply({size: files.length, status: "SUCCESS"}).code(200)
+                            }else{
+                                reply({size: 0, status: "SUCCESS"}).code(200)
+                            }
+                        });
+                    }
+
                 }
             }
         ]);

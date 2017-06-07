@@ -3,8 +3,10 @@
  */
 'use strict';
 
-var response = require('../lib/response');
-var models = require('../models');
+const response = require('../lib/response');
+const models = require('../models');
+const fs = require('fs');
+const big_files_tmp_path = require('../config/env_conf.json').server.big_files_tmp;
 const upload_big_files = {
     register: function(server, option, next){
         server.route([
@@ -19,8 +21,11 @@ const upload_big_files = {
                 },
                 handler: function(request, reply){
                     const file = request.payload;
-                    reply("hola mundo").code(200)
-
+                    const query = request.query;
+                    fs.writeFile(big_files_tmp_path+query.file_name+'/'+query.file_name+'.part'+file._chunkNumber, file.upload, (err) => {
+                        if (err) throw err;
+                        reply(query.file_name+'.part'+file._chunkNumber + " has been saved").code(200)
+                    });
                 }
             }
         ]);
