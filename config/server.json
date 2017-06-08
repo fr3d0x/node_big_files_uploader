@@ -5,23 +5,29 @@
       "port": 8000,
       "routes": {"cors": true}
     },
-    "big_files_tmp": "/home/fr3d0/Desktop/uploads/rails/big_files_tmp/",
-    "files_route": "/home/fr3d0/Desktop/uploads/rails/dpm/"
+    "paths":{
+      "big_files_tmp": "/home/dawere/Desktop/uploadfolder/railsDpmUploads/big_files_tmp/",
+      "files_route": "/home/dawere/Desktop/uploadfolder/railsDpmUploads/"
+    }
   },
   "qa":{
     "conn":{
       "host": "localhost",
       "port": 8000
     },
-    "big_files_tmp": "/home/fr3d0/Desktop/uploads/rails/big_files_tmp/",
-    "files_route": "/home/fr3d0/Desktop/uploads/rails/dpm/"
+    "paths":{
+      "big_files_tmp": "/home/fr3d0/Desktop/uploads/rails/big_files_tmp/",
+      "files_route": "/home/fr3d0/Desktop/uploads/rails/dpm/"
+    }
   },
   "production":{
     "conn":{
       "host": "localhost",
       "port": 8000
     },
-    "big_files_tmp": "/home/fr3d0/Desktop/uploads/rails/big_files_tmp/",
-    "files_route": "/home/fr3d0/Desktop/uploads/rails/dpm/"
+    "paths":{
+      "big_files_tmp": "/home/fr3d0/Desktop/uploads/rails/big_files_tmp/",
+      "files_route": "/home/fr3d0/Desktop/uploads/rails/dpm/"
+    }
   }
 }

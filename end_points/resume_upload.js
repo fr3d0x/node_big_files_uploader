@@ -17,7 +17,7 @@ const resume_upload = {
                     auth: 'jwt'
                 },
                 handler: function(request, reply){
-                    const dir = require('../config/env_conf.json').server.big_files_tmp;
+                    const dir = require('../config/env_conf.json').server.paths.big_files_tmp;
                     const params = request.query;
                     if (!fs.existsSync(dir+params.file_name)){
                         fs.mkdirSync(dir+params.file_name);
